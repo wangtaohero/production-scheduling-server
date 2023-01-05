@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace：命名空间，用来映射对应的mapper相当于将mapper和mapper.xml连接起来，这一步很重要-->
+<mapper namespace="com.zhitong.server.mapper.WorkFaceMapper">
+    <insert id="save" parameterType="com.zhitong.server.entity.WorkFaceEntity">
+        insert into ps_work_face_tab (id, mine_id, wf_name, wf_code, wf_type_id, wf_status_id, coal_seam_id,
+                                      mining_area_id, wf_length, wf_width, wf_thickness, wf_total_reserves,
+                                      wf_valid_reserves, wf_design_height, hardness, proportion, stop_date)
+        values (#{id},#{mineId}, #{wfName}, #{wfCode}, #{wfTypeId}, #{wfStatusId}, #{coalSeamId},
+                #{miningAreaId}, #{wfLength}, #{wfWidth}, #{wfThickness}, #{wfTotalReserves},
+                #{wfValidReserves}, #{wfDesignHeight}, #{hardness}, #{proportion}, #{stopDate})
+    </insert>
+</mapper>
+

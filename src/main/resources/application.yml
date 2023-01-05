@@ -8,12 +8,15 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/walker_test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimeZone=UTC
-
+    password: Wangtao!@#321
+    url: jdbc:mysql://localhost:3306/production-scheduling?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimeZone=UTC
+  thymeleaf:
+    #缓存关闭
+    cache: false
 # mybatis配置
 mybatis:
   # 映射文件,这个决定的是mapper.xml的放置位置
   mapper-locations: classpath:mapping/*.xml
   #entity的映射位置
-  type-aliases-package: com.walker.mybatis.entity
+  type-aliases-package: com.zhitong.server.entity
+
