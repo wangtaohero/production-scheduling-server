@@ -20,3 +20,11 @@ mybatis:
   #entity的映射位置
   type-aliases-package: com.zhitong.server.entity
 
+# pagehelper
+#分页pageHelper
+# pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

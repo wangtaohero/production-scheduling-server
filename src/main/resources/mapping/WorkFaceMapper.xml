@@ -6,9 +6,32 @@
         insert into ps_work_face_tab (id, mine_id, wf_name, wf_code, wf_type_id, wf_status_id, coal_seam_id,
                                       mining_area_id, wf_length, wf_width, wf_thickness, wf_total_reserves,
                                       wf_valid_reserves, wf_design_height, hardness, proportion, stop_date)
-        values (#{id},#{mineId}, #{wfName}, #{wfCode}, #{wfTypeId}, #{wfStatusId}, #{coalSeamId},
+        values (#{id}, #{mineId}, #{wfName}, #{wfCode}, #{wfTypeId}, #{wfStatusId}, #{coalSeamId},
                 #{miningAreaId}, #{wfLength}, #{wfWidth}, #{wfThickness}, #{wfTotalReserves},
                 #{wfValidReserves}, #{wfDesignHeight}, #{hardness}, #{proportion}, #{stopDate})
     </insert>
+    <resultMap id="workFaceResultMap" type="WorkFaceEntity">
+        <id property="id" column="id" />
+        <result property="mineId" column="mine_id"/>
+        <result property="wfName" column="wf_name"/>
+        <result property="wfCode" column="wf_code"/>
+        <result property="wfTypeId" column="wf_type_id"/>
+        <result property="wfStatusId" column="wf_status_id"/>
+        <result property="coalSeamId" column="coal_seam_id"/>
+        <result property="miningAreaId" column="mining_area_id"/>
+        <result property="wfLength" column="wf_length"/>
+        <result property="wfWidth" column="wf_width"/>
+        <result property="wfThickness" column="wf_thickness"/>
+        <result property="wfTotalReserves" column="wf_total_reserves"/>
+        <result property="wfValidReserves" column="wf_valid_reserves"/>
+        <result property="wfDesignHeight" column="wf_design_height"/>
+        <result property="hardness" column="hardness"/>
+        <result property="proportion" column="coal_seam_id"/>
+        <result property="stopDate" column="stop_date"/>
+    </resultMap>
+    <select id="selectPage" resultMap="workFaceResultMap">
+        select *
+        from ps_work_face_tab
+    </select>
 </mapper>
 
