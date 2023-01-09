@@ -7,14 +7,19 @@ import java.sql.Date;
 //通过注解自动生成set、get方法
 @Data
 public class WorkFaceEntity {
-    private String id;
-    private String mineId;
+    private int wfId;
+    private int mineId;
+    private String mine;
     private String wfName;
     private String wfCode;
-    private String wfTypeId;
-    private String wfStatusId;
-    private String coalSeamId;
-    private String miningAreaId;
+    private int wfTypeId;
+    private String wfType;
+    private int wfStatusId;
+    private String wfStatus;
+    private int coalSeamId;
+    private String coalSeam;
+    private int miningAreaId;
+    private String miningArea;
     private float wfLength;
     private float wfWidth;
     private float wfThickness;

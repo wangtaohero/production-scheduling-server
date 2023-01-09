@@ -21,26 +21,35 @@ public class WorkFaceController {
     public String save(@RequestBody WorkFaceEntity workFaceEntity) {
         //5、调用service方法
         workFaceService.save(workFaceEntity);
+        System.out.print(workFaceEntity.getWfName());
         return "success";
-
     }
 
     //5、分页查询工作面
     @GetMapping("/work-faces")
-    public Object findPage(Integer offset, Integer limit) {
-        return workFaceService.findPage(offset, limit);
+    public Object findPage(Integer pageNum, Integer pageSize) {
+        return workFaceService.findPage(pageNum, pageSize);
+    }
+
+    //6、查询单个工作面
+    @GetMapping("/work-faces/{wf_id}")
+    public WorkFaceEntity find(Integer wfId) {
+        return workFaceService.find(wfId);
     }
 
     //6、修改单个work-face
-    @PutMapping("/work-face/:id")
-    public void update() {
-
+    @PutMapping("/work-faces/{wf_id}")
+    public String updateWorkFace(@RequestBody WorkFaceEntity workFaceEntity) {
+        workFaceService.updateWorkFace(workFaceEntity);
+        System.out.print(workFaceEntity.getWfName());
+        return "ok1";
     }
 
     //7、删除work-face
-    @DeleteMapping("/work-face/:id")
-    public void delete() {
+    @DeleteMapping("/work-faces/{wf_id}")
+    public void deleteWorkFace(Integer wfId) {
 
+        workFaceService.deleteWorkFace(wfId);
     }
 
 }

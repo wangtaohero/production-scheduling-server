@@ -3,22 +3,28 @@
 <!--namespace：命名空间，用来映射对应的mapper相当于将mapper和mapper.xml连接起来，这一步很重要-->
 <mapper namespace="com.zhitong.server.mapper.WorkFaceMapper">
     <insert id="save" parameterType="com.zhitong.server.entity.WorkFaceEntity">
-        insert into ps_work_face_tab (id, mine_id, wf_name, wf_code, wf_type_id, wf_status_id, coal_seam_id,
-                                      mining_area_id, wf_length, wf_width, wf_thickness, wf_total_reserves,
-                                      wf_valid_reserves, wf_design_height, hardness, proportion, stop_date)
-        values (#{id}, #{mineId}, #{wfName}, #{wfCode}, #{wfTypeId}, #{wfStatusId}, #{coalSeamId},
-                #{miningAreaId}, #{wfLength}, #{wfWidth}, #{wfThickness}, #{wfTotalReserves},
-                #{wfValidReserves}, #{wfDesignHeight}, #{hardness}, #{proportion}, #{stopDate})
+        insert into ps_work_face_tab (wf_id, wf_name, wf_code, wf_type_id, wf_type, wf_status_id, wf_status, mine_id,
+                                      mine, coal_seam_id, coal_seam, mining_area_id, mining_area, wf_length, wf_width,
+                                      wf_thickness, wf_total_reserves, wf_valid_reserves, wf_design_height, hardness,
+                                      proportion, stop_date)
+        values (#{wfId}, #{wfName}, #{wfCode}, #{wfTypeId}, #{wfType}, #{wfStatusId}, #{wfStatus}, #{mineId}, #{mine},
+                #{coalSeamId}, #{coalSeam}, #{miningAreaId}, #{miningArea}, #{wfLength}, #{wfWidth}, #{wfThickness},
+                #{wfTotalReserves}, #{wfValidReserves}, #{wfDesignHeight}, #{hardness}, #{proportion}, #{stopDate})
     </insert>
     <resultMap id="workFaceResultMap" type="WorkFaceEntity">
-        <id property="id" column="id" />
-        <result property="mineId" column="mine_id"/>
+        <id property="wfId" column="wf_id"/>
         <result property="wfName" column="wf_name"/>
         <result property="wfCode" column="wf_code"/>
         <result property="wfTypeId" column="wf_type_id"/>
+        <result property="wfType" column="wf_type"/>
         <result property="wfStatusId" column="wf_status_id"/>
+        <result property="wfStatus" column="wf_status"/>
+        <result property="mineId" column="mine_id"/>
+        <result property="mine" column="mine"/>
         <result property="coalSeamId" column="coal_seam_id"/>
+        <result property="coalSeam" column="coal_seam"/>
         <result property="miningAreaId" column="mining_area_id"/>
+        <result property="miningArea" column="mining_area"/>
         <result property="wfLength" column="wf_length"/>
         <result property="wfWidth" column="wf_width"/>
         <result property="wfThickness" column="wf_thickness"/>
@@ -26,12 +32,47 @@
         <result property="wfValidReserves" column="wf_valid_reserves"/>
         <result property="wfDesignHeight" column="wf_design_height"/>
         <result property="hardness" column="hardness"/>
-        <result property="proportion" column="coal_seam_id"/>
+        <result property="proportion" column="proportion"/>
         <result property="stopDate" column="stop_date"/>
     </resultMap>
     <select id="selectPage" resultMap="workFaceResultMap">
         select *
         from ps_work_face_tab
     </select>
+    <select id="find" resultMap="workFaceResultMap">
+        select *
+        from ps_work_face_tab
+        where wf_id = #{wfId}
+    </select>
+    <update id="updateWorkFace">
+        update ps_work_face_tab
+        set wf_name = #{wfName},
+            wf_code = #{wfCode},
+            wf_type_id = #{wfTypeId},
+            wf_type = #{wfType},
+            wf_status_id = #{wfStatusId},
+            wf_status = #{wfStatus},
+            mine_id = #{mineId},
+            mine = #{mine},
+            coal_seam_id = #{coalSeamId},
+            coal_seam = #{coalSeam},
+            mining_area_id = #{miningAreaId},
+            mining_area = #{miningArea},
+            wf_length = #{wfLength},
+            wf_width = #{wfWidth},
+            wf_thickness = #{wfThickness},
+            wf_total_reserves = #{wfTotalReserves},
+            wf_valid_reserves = #{wfValidReserves},
+            wf_design_height = #{wfDesignHeight},
+            hardness = #{hardness},
+            proportion = #{proportion},
+            stop_date = #{stopDate}
+        where wf_id = #{wfId}
+    </update>
+    <delete id="deleteWorkFace">
+        delete
+        from ps_work_face_tab
+        where wf_id = #{wfId}
+    </delete>
 </mapper>
 

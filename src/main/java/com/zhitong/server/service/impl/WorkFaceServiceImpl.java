@@ -29,11 +29,26 @@ public class WorkFaceServiceImpl implements WorkFaceService {
     }
 
     @Override
-    public PageResult findPage(Integer offset,Integer limit) {
-        PageHelper.startPage(offset, limit);
+    public PageResult findPage(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
         List<WorkFaceEntity> workFaceEntities = workFaceMapper.selectPage();
-        PageInfo<WorkFaceEntity> pageInfo=new PageInfo(workFaceEntities);
-        return PageUtils.getPageResult( pageInfo);
+        PageInfo<WorkFaceEntity> pageInfo = new PageInfo(workFaceEntities);
+        return PageUtils.getPageResult(pageInfo);
+    }
+
+    @Override
+    public WorkFaceEntity find(Integer wfId){
+        return workFaceMapper.find(wfId);
+
+    }
+    @Override
+    public void updateWorkFace(WorkFaceEntity workFaceEntity){
+
+        workFaceMapper.updateWorkFace(workFaceEntity);
+    }
+    @Override
+    public  void deleteWorkFace(Integer wfId){
+        workFaceMapper.deleteWorkFace(wfId);
     }
 }
 
