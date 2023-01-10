@@ -21,7 +21,6 @@ public class WorkFaceController {
     public String save(@RequestBody WorkFaceEntity workFaceEntity) {
         //5、调用service方法
         workFaceService.save(workFaceEntity);
-        System.out.print(workFaceEntity.getWfName());
         return "success";
     }
 
@@ -41,7 +40,6 @@ public class WorkFaceController {
     @PutMapping("/work-faces/{wf_id}")
     public String updateWorkFace(@RequestBody WorkFaceEntity workFaceEntity) {
         workFaceService.updateWorkFace(workFaceEntity);
-        System.out.print(workFaceEntity.getWfName());
         return "ok1";
     }
 
